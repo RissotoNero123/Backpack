@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Создание брони{% endblock %}
+
+{% block content %}
+    <h2>{% if object %}Редактировать бронь{% else %}Создать бронь{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+    <a href="{% url 'reservation_list' %}" class="btn btn-secondary mt-2">Назад</a>
+{% endblock %}

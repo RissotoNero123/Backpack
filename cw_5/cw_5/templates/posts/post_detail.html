@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>Автор: {{ post.author.username }}</p>
+<p>Описание: {{ post.description }}</p>
+{% if post.picture %}
+    <img src="{{ post.picture.url }}" class="img-fluid" alt="Изображение поста">
+{% endif %}
+
+{% if user == post.author or user.is_superuser %}
+    <a href="{% url 'edit_post' post.id %}" class="btn btn-warning mt-3">Редактировать</a>
+    <form action="{% url 'delete_post' post.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Удалить</button>
+    </form>
+{% endif %}
+<a href="{% url 'post_list' %}" class="btn btn-secondary mt-3">Назад к списку</a>
+{% endblock %}
+

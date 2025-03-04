@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Список столиков{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Список столиков</h2>
+    <a href="{% url 'table_create' %}" class="btn btn-primary mb-3">Добавить столик</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Номер</th>
+                <th>Вместимость</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for table in tables %}
+            <tr>
+                <td>{{ table.id }}</td>
+                <td>{{ table.number }}</td>
+                <td>{{ table.capacity }}</td>
+                <td>
+                    <a href="{% url 'table_detail' table.id %}" class="btn btn-info btn-sm">Детали</a>
+                    <a href="{% url 'table_update' table.id %}" class="btn btn-warning btn-sm">Редактировать</a>
+                    <a href="{% url 'table_delete' table.id %}" class="btn btn-danger btn-sm">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

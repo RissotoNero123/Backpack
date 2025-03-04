@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Детали столика{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Детали столика</h2>
+    <p><strong>ID:</strong> {{ table.id }}</p>
+    <p><strong>Номер:</strong> {{ table.number }}</p>
+    <p><strong>Вместимость:</strong> {{ table.capacity }}</p>
+    <a href="{% url 'table_list' %}" class="btn btn-secondary">Назад</a>
+    <a href="{% url 'table_update' table.id %}" class="btn btn-warning">Редактировать</a>
+    <a href="{% url 'table_delete' table.id %}" class="btn btn-danger">Удалить</a>
+</div>
+{% endblock %}
