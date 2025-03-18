@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mt-5">Добро пожаловать в систему бронирования столиков!</h1>
+    <p class="lead">Вы можете управлять клиентами, столами и бронированием.</p>
+    <a href="{% url 'customer_list' %}" class="btn btn-primary m-2">Список клиентов</a>
+    <a href="{% url 'table_list' %}" class="btn btn-success m-2">Список столов</a>
+    <a href="{% url 'reservation_list' %}" class="btn btn-warning m-2">Список бронирований</a>
+</div>
+{% endblock %}
